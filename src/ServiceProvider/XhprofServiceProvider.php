@@ -27,7 +27,8 @@ class XhprofServiceProvider extends ServiceProviderAwesome
         $router = $this->container->get(Router::class);
         $router->group(['middleware' => XhprofMiddleware::class], function (Router $router) {
             $router->get('__xhprof', XhprofController::class . '@index')->name('xhprof.index');
-            $router->get('__xhprof/{id}', XhprofController::class . '@show')->name('xhprof.show');
+            $router->get('__xhprof/{id}', XhprofController::class . '@show')
+                ->name('xhprof.show')->pattern('id', '[^/]+');
         });
 
         /** @var Blade $blade */
