@@ -23,7 +23,7 @@
 @if ($depth < 25)
     @foreach($data['children'] as $data)
         @if ($data['wt'] > 100)
-            @include('xhprof.inc.subcall', ['data' => $data, 'depth' => $depth+1])
+            @include('xhprof@inc.subcall', ['data' => $data, 'depth' => $depth+1])
         @endif
     @endforeach
 @endif

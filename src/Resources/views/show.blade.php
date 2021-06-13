@@ -84,7 +84,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @include('xhprof.inc.subcall', ['data' => $xhprof['profile']['main()'], 'depth' => 0])
+                    @include('xhprof@inc.subcall', ['data' => $xhprof['profile']['main()'], 'depth' => 0])
                 </tbody>
             </table>
         </div>

@@ -7,6 +7,7 @@ use TinyFramework\Http\HttpKernel;
 use TinyFramework\Http\Request;
 use TinyFramework\Http\Response;
 use TinyFramework\Http\Router;
+use TinyFramework\Template\Blade;
 use TinyFramework\Xhprof\Http\Middleware\XhprofMiddleware;
 use TinyFramework\ServiceProvider\ServiceProviderAwesome;
 use TinyFramework\Xhprof\Http\Controllers\XhprofController;
@@ -28,6 +29,10 @@ class XhprofServiceProvider extends ServiceProviderAwesome
             $router->get('__xhprof', XhprofController::class . '@index')->name('xhprof.index');
             $router->get('__xhprof/{id}', XhprofController::class . '@show')->name('xhprof.show');
         });
+
+        /** @var Blade $blade */
+        $blade = $this->container->get(Blade::class);
+        $blade->addNamespaceDirectory('xhprof', __DIR__ . '/../Resources/views');
 
         /** @var HttpKernel $kernel */
         $kernel = $this->container->get('kernel');

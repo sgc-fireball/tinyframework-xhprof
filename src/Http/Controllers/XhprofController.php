@@ -13,7 +13,7 @@ class XhprofController
         $dumps = array_map(function ($dump) {
             return explode('.', basename($dump))[0];
         }, glob(config('xhprof.dir') . '/*.xhprof'));
-        return view('xhprof.index', compact('dumps'));
+        return view('xhprof@index', compact('dumps'));
     }
 
     public function show(string $id)
@@ -23,7 +23,7 @@ class XhprofController
             return Response::error(404);
         }
         $xhprof = new Xhprof(json_decode(file_get_contents($file), true));
-        return view('xhprof.show', compact('xhprof'));
+        return view('xhprof@show', compact('xhprof'));
     }
 
 }
