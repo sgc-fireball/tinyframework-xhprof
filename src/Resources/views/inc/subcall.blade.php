@@ -22,13 +22,6 @@
 </tr>
 @if ($depth < 25)
     @foreach($data['children'] as $data)
-        @if ($data['wt'] > 100)
-            @include('xhprof@inc.subcall', ['data' => $data, 'depth' => $depth+1])
-        @endif
+        @include('xhprof@inc.subcall', ['data' => $data, 'depth' => $depth+1])
     @endforeach
 @endif
-
-<!-- /*
-continue(strpos($name, 'mysqli::') === 0)
-if (preg_match('/::.*{closure}/', $caller) || in_array($name, ['TinyFramework\Core\Pipeline::call', 'TinyFramework\Core\Container::get']) || strpos($name, 'TinyFramework\Core\Container::call') === 0)
-*/ -->

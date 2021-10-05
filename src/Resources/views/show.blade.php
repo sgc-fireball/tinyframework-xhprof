@@ -28,8 +28,8 @@
 
 @section('navbar-outer', '')
 
-@section('content')
-    <div class="container">
+@section('content-outer')
+    <div style="max-width: 1280px; margin: 0 auto;">
         <h1>XHPROF</h1>
         <div class="row">
             <div class="col-12 col-md-4">

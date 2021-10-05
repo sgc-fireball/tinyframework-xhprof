@@ -41,6 +41,10 @@ class XhprofServiceProvider extends ServiceProviderAwesome
             return;
         }
 
+        if (!function_exists('xhprof_enable')) {
+            return;
+        }
+
         $kernel->terminateRequestCallback(function (Request $request, Response $response) use ($config) {
             $dir = $config->get('xhprof.dir');
             $expire = time() - $config->get('xhprof.expire') ?? 60 * 60 * 24 * 7; // 7 days default
@@ -99,7 +103,7 @@ class XhprofServiceProvider extends ServiceProviderAwesome
             tmpreaper($dir, $expire);
         });
 
-        xhprof_enable(
+        \xhprof_enable(
             XHPROF_FLAGS_NO_BUILTINS | XHPROF_FLAGS_CPU | XHPROF_FLAGS_MEMORY,
             [
                 'ignored_functions' => [

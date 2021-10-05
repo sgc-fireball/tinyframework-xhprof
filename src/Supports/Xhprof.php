@@ -41,7 +41,7 @@ class Xhprof implements ArrayAccess
 
             $data['children'] = [];
             $data['caller'] = isset($caller) ? $caller : 'main()';
-            $data['callee'] = $callee;
+            $data['callee'] = preg_replace('/^(.*)::(.*){closure}(@\d+)?$/', '\\1::{Closure}', $callee);
             $data['ewt'] = $data['wt'];
             $data['ecpu'] = $data['cpu'];
             $data['emu'] = $data['mu'];
